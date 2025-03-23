@@ -1,44 +1,41 @@
-
+package gestionDechet;
 import java.util.*;
 
-/**
- * 
- */
+
 public class Statistique {
 
-    /**
-     * Default constructor
-     */
-    public Statistique() {
-    }
-
-    /**
-     * 
-     */
     private List<Depot> historiqueDepots;
-
-    /**
-     * @return
-     */
-    public List<Depot> recupererHistoriques() {
-        // TODO implement here
-        return null;
+    
+    public Statistique() {
+        this.historiqueDepots= new ArrayList<>();
     }
 
-    /**
-     * @return
-     */
+    
+    public List<Depot> getHistoriqueDepots() {
+        return historiqueDepots ;
+    }
+
+    public void setHistoriqueDepots(List<Depot> historiqueDepots) {
+        this.historiqueDepots=historiqueDepots;
+    }
+
+   public void sauvergarderDepot(Depot depot) {
+    historiqueDepots.add(depot);
+   }
+
     public float calculerTotalDechets() {
-        // TODO implement here
-        return 0.0f;
+        float total=0;
+        for (Depot depot: historiqueDepot) {
+            total+=depot.getQuantite() ; }
+        return total;
     }
 
-    /**
-     * @return
-     */
+    
     public float productionMoyenne() {
-        // TODO implement here
-        return 0.0f;
+        if (historiqueDepots.isEmpty()) {
+            return 0 ; }
+        
+        return calculerTotalDechets/historiqueDepots.size();
     }
 
 }
