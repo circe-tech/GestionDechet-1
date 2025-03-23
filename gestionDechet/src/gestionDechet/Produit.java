@@ -1,46 +1,40 @@
-
+package gestionDechet
 import java.util.*;
 
-/**
- * 
- */
 public class Produit {
 
-    /**
-     * Default constructor
-     */
-    public Produit() {
-    }
-
-    /**
-     * 
-     */
-    private string idProduits;
-
-    /**
-     * 
-     */
-    private string nom;
-
-    /**
-     * 
-     */
+    private String idProduits;
+    private String nom;
     private float prix;
-
-    /**
-     * @return
-     */
-    public float getPrix() {
-        // TODO implement here
-        return 0.0f;
+    
+    public Produit(String idProduits, String nom, float prix) {
+        this.idProduits=idProduits;
+        this.nom=nom;
+        this.prix=prix;
     }
 
-    /**
-     * @return
-     */
+    
+    public string getIdProduits() {
+        return idProduits;
+    }
+    public void setIdProduits(String idProduits) {
+        this.idProduits=idProduits;
+    }
+
     public string getNom() {
-        // TODO implement here
-        return null;
+        return nom;
     }
+    public void setNom(String nom) {
+        this.nom=nom;
+    }
+
+    public float getPrix() {
+        return prix;
+    }
+    public void setPrix(float prix) {
+        this.prix=prix;
+    }
+
+    
 
 }
