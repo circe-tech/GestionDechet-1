@@ -1,85 +1,86 @@
-
+package gestionDechet;
 import java.util.*;
 
-/**
- * 
- */
+
 public class Compte {
 
-    /**
-     * Default constructor
-     */
-    public Compte() {
-    }
-
-    /**
-     * 
-     */
-    private String id;
-
-    /**
-     * 
-     */
-    private string email;
-
-    /**
-     * 
-     */
-    private String motDePasse;
-
-    /**
-     * 
-     */
-    private HistoriqueDepot historiqueDepot;
-
-    /**
-     * 
-     */
+    private String idCompte;
+    private String email;
+    private String mdpCompte;
     private int pointsFidelite;
+    
+    
+    public Compte(String idCompte, String email, String mdpCompte, int pointsFidelite) {
+        this.idCompte=idCompte;
+        this.email=email;
+        this.mdpCompte=mdpCompte;
+        this.pointsFidelite=pointsFidelite;
+    }
 
-    /**
-     * @param email 
-     * @param mdp 
-     * @return
-     */
+    public String getIdCompte(){
+        return idCompte;
+    }
+    public void setIdCompte(String idCompte) {
+        this.idCompte=idCompte ;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email=email ;
+    }
+
+    public String getMdpCompte(){
+        return mdpCompte;
+    }
+    public void setMdpCompte(String mdpCompte) {
+        this.mdpCompte=mdpCompte ;
+    }
+
+    public String getPointsFidelite(){
+        return pointsFidelite;
+    }
+    public void setPointsFidelite(String pointsFidelite) {
+        this.pointsFidelite=pointsFidelite ;
+    }
+
+    
     public boolean seConnecter(String email, String mdp) {
-        // TODO implement here
-        return false;
+        return this.email.equals(email) && this.mdpCompte.equals(mdp)  ;
     }
 
-    /**
-     * @return
-     */
-    public HistoriqueDepot consulterHistoriqueDepots() {
-        // TODO implement here
-        return null;
+   
+    public List<Depot> consulterHistoriqueDepots(CentreDeTrie centre) {
+        return centre.getStatistique().getHistoriqueDepots();
     }
 
-    /**
-     * @return
-     */
+    
     public int consulterPoints() {
-        // TODO implement here
-        return 0;
+        return pointsFidelite;
     }
 
-    /**
-     * @param bon 
-     * @return
-     */
+   
     public boolean echangerPoints(bonReduction bon) {
-        // TODO implement here
+        if (bon.verifierreduction(pointsFielite) {
+            pointsFidelite-=bon.getPointsNecessaires;
+            return true; }
         return false;
     }
 
-    /**
-     * @param poubelle 
-     * @param dechet 
-     * @return
-     */
-    public boolean deposerDechets(Poubelle poubelle, Dechet dechet) {
-        // TODO implement here
-        return false;
+    
+    public boolean deposerDechets(Poubelle poubelle, TypeDechet typeDechet, float quantite) {
+        if (!poubelle.verificationConformiteDechet(typeDechet) {
+           return false;  }
+        if (poubelle.estPleine()) {
+            poubelle.envoyerNotification(); }
+        Depot depot= new Depot(typeDechet, quantite, new date(), pointsGagnes);
+        depot.enregistrerDepot;
+        historiqueDepots.add(depot);
+        pointsFidelite+=pointsGagnes;
+        poubelle.calculerQuantiteDechets(typeDechet);
+
+        return true;
     }
 
 }
